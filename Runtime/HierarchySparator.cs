@@ -4,11 +4,12 @@ using UnityEditor;
 [InitializeOnLoad]
 public class HierarchySparator : MonoBehaviour
 {
-  [ColorUsage(showAlpha: false)]
+  [HideInInspector]
+  [SerializeField]
   private Color m_BarColor;
   public Color BarColor {
     get {
-      if(m_BarColor == null) return Color.black;
+      if(m_BarColor == null) m_BarColor = Color.black;
       return m_BarColor;
     }
     set {
