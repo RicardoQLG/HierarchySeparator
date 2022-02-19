@@ -5,17 +5,28 @@ using UnityEngine;
 [CanEditMultipleObjects]
 public class HierarchySeparatorEditor : Editor
 {
-  public HierarchySeparator variable;
+    private SerializedProperty _outlineSize;
+    private SerializedProperty _outlineColor;
+    private SerializedProperty _barColor;
+    private SerializedProperty _textColor;
 
-  public void OnEnable()
-  {
-    variable = target as HierarchySeparator;
-  }
+    public void OnEnable()
+    {
+        _outlineSize = serializedObject.FindProperty("m_OutlineSize");
+        _outlineColor = serializedObject.FindProperty("m_OutlineColor");
+        _barColor = serializedObject.FindProperty("m_BarColor");
+        _textColor = serializedObject.FindProperty("m_TextColor");
+    }
+    
+    public override void OnInspectorGUI()
+    {
+        serializedObject.Update();
 
-  public override void OnInspectorGUI()
-  {
-    base.OnInspectorGUI();
-    variable.BarColor = EditorGUILayout.ColorField(new GUIContent("Color"), variable.BarColor, true, false, false);
-	  variable.TextColor = EditorGUILayout.ColorField(new GUIContent("Color"), variable.TextColor, true, false, false);
-  }
+        EditorGUILayout.PropertyField(_outlineSize);
+        EditorGUILayout.PropertyField(_outlineColor);
+        EditorGUILayout.PropertyField(_barColor);
+        EditorGUILayout.PropertyField(_textColor);
+
+        serializedObject.ApplyModifiedProperties();
+    }
 }
