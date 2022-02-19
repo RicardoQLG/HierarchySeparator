@@ -37,7 +37,7 @@ public class HierarchySeparator : MonoBehaviour
     EditorApplication.hierarchyWindowItemOnGUI += HierarchyWindowItemOnGUI;
   }
 
-  [MenuItem("GameObject/Separator")]
+  [MenuItem("GameObject/Separator", false, 30)]
   public static void CreateSeparator(MenuCommand menuCommand)
   {
     GameObject separator = new GameObject("Separator");
