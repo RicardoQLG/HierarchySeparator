@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(HierarchySeparator))]
+[CanEditMultipleObjects]
 public class HierarchySeparatorEditor : Editor
 {
   public HierarchySeparator variable;
