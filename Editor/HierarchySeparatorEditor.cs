@@ -14,7 +14,7 @@ public class HierarchySeparatorEditor : Editor
   public override void OnInspectorGUI()
   {
     base.OnInspectorGUI();
-    variable.BarColor = EditorGUILayout.ColorField(new GUIContent("Color"), variable.BarColor, true, false, false);
-	variable.TextColor = EditorGUILayout.ColorField(new GUIContent("Color"), variable.TextColor, true, false, false);
+    variable.BarColor = EditorGUILayout.ColorField(new GUIContent("Bar Color"), variable.BarColor, true, false, false);
+	variable.TextColor = EditorGUILayout.ColorField(new GUIContent("Text Color"), variable.TextColor, true, false, false);
   }
 }

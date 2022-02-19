@@ -55,7 +55,7 @@ public class HierarchySeparator : MonoBehaviour
     if (!gameObject.TryGetComponent(out HierarchySeparator hierarchy)) return;
 
     Color color = hierarchy.BarColor;
-	GuiStyle guiStyle = new GuiStyle();
+	GUIStyle guiStyle = new GUIStyle();
 	guiStyle.fontStyle = FontStyle.Bold;
     guiStyle.normal.textColor = hierarchy.TextColor;
 	guiStyle.alignment = TextAnchor.MiddleCenter;
