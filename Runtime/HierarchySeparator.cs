@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 
 [InitializeOnLoad]
-public class HierarchySparator : MonoBehaviour
+public class HierarchySeparator : MonoBehaviour
 {
   [HideInInspector]
   [SerializeField]
@@ -17,8 +17,22 @@ public class HierarchySparator : MonoBehaviour
       m_BarColor = value;
     }
   }
+  
+  [HideInInspector]
+  [SerializeField]
+  private Color m_TextColor;
+  public Color TextColor {
+    get {
+      if(m_TextColor == null) m_TextColor = Color.white;
+      return m_TextColor;
+    }
+    set {
+      value.a = 1f;
+      m_TextColor = value;
+    }
+  }
 
-  static HierarchySparator()
+  static HierarchySeparator()
   {
     EditorApplication.hierarchyWindowItemOnGUI += HierarchyWindowItemOnGUI;
   }
@@ -27,7 +41,7 @@ public class HierarchySparator : MonoBehaviour
   public static void CreateSeparator(MenuCommand menuCommand)
   {
     GameObject separator = new GameObject("Separator");
-    separator.AddComponent<HierarchySparator>();
+    separator.AddComponent<HierarchySeparator>();
     GameObjectUtility.SetParentAndAlign(separator, menuCommand.context as GameObject);
     Undo.RegisterCreatedObjectUndo(separator, "Create " + separator.name);
     Selection.activeObject = separator;
@@ -38,11 +52,15 @@ public class HierarchySparator : MonoBehaviour
     GameObject gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
 
     if (gameObject == null) return;
-    if (!gameObject.TryGetComponent(out HierarchySparator hierarchy)) return;
+    if (!gameObject.TryGetComponent(out HierarchySeparator hierarchy)) return;
 
     Color color = hierarchy.BarColor;
+	GuiStyle guiStyle = new GuiStyle();
+	guiStyle.fontStyle = FontStyle.Bold;
+    guiStyle.normal.textColor = hierarchy.TextColor;
+	guiStyle.alignment = TextAnchor.MiddleCenter;
 
     EditorGUI.DrawRect(selectionRect, color);
-    EditorGUI.DropShadowLabel(selectionRect, $"{gameObject.name.ToUpperInvariant()}");
+    EditorGUI.DropShadowLabel(selectionRect, $"{gameObject.name.ToUpperInvariant()}", guiStyle);
   }
 }
