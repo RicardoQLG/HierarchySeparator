@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 
 [InitializeOnLoad]
-public class HierarchySeparator : MonoBehaviour
+public class HierarchySparator : MonoBehaviour
 {
     [HideInInspector]
     [SerializeField]
@@ -55,7 +55,7 @@ public class HierarchySeparator : MonoBehaviour
         }
     }
 
-    static HierarchySeparator()
+    static HierarchySparator()
     {
         EditorApplication.hierarchyWindowItemOnGUI += HierarchyWindowItemOnGUI;
     }
