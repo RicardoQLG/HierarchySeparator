@@ -86,4 +86,14 @@ public class HierarchySeparator : MonoBehaviour
         EditorGUI.DrawRect(new Rect(selectionRect.x + hierarchy.OutlineSize, selectionRect.y + hierarchy.OutlineSize, selectionRect.width - (hierarchy.OutlineSize * 2), selectionRect.height - (hierarchy.OutlineSize * 2)), hierarchy.BarColor);
         EditorGUI.DropShadowLabel(selectionRect, $"{gameObject.name.ToUpperInvariant()}", guiStyle);
     }
+
+    public void Start ()
+    {
+        gameObject.SetActive(false);
+    }
+    
+    public void Reset()
+    {
+        gameObject.tag = "EditorOnly";
+    }
 }
