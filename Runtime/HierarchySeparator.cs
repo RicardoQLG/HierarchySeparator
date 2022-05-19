@@ -96,4 +96,9 @@ public class HierarchySeparator : MonoBehaviour
     {
         gameObject.tag = "EditorOnly";
     }
+	
+	void OnValidate()
+    {
+        EditorApplication.RepaintHierarchyWindow();
+    }
 }
