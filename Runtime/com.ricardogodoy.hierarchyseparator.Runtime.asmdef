@@ -6,7 +6,6 @@
     "excludePlatforms": [
         "Android",
         "CloudRendering",
-        "EmbeddedLinux",
         "GameCoreScarlett",
         "GameCoreXboxOne",
         "iOS",
